@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APK</title>
+    <style>
+        body{
+            background-color: white;
+        }
+        h1{
+            text-align: center;
+            font-size: 60px;
+            transform: rotate(-10deg);
+        }
+        .kubek {
+            width: 200px;
+            height: 200px;
+            border: 3px solid black;
+            border-top: 0ch;
+            border-radius: 0 0 20px 20px;
+            cursor: pointer;
+            float: left;
+            margin: 20px;
+            background-image: linear-gradient(to top, #FFF700 50%,transparent 50%);
+            background-size: 200% 200%;
+            transition: background-position 500ms;
+        }   
+        .r{
+            background-image: linear-gradient(to top, red 50%,transparent 50%);
+
+        } 
+        .g{
+            background-image: linear-gradient(to top, green 50%,transparent 50%);
+
+        } 
+        .b{
+            background-image: linear-gradient(to top, blue 50%,transparent 50%);
+
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        Fill a cup
+    </h1>
+    <div class="kubek r" level="0"></div>
+    <div class="kubek" level="0"></div>
+    <div class="kubek g" level="0"></div>
+    <div class="kubek b" level="0"></div>
+</body>
+<script>
+    function CupClick(evt){
+        let level = Number(this.getAttribute('level'))
+        
+        level+=24;
+        if(level <= 96 ){
+            this.style.backgroundPosition="0 " + level + "%";
+            console.log(level);
+            this.setAttribute("level", level)
+        }
+        else{
+            this.style.cursor = "not-allowed"
+        }
+        
+    }
+    let kubki = document.querySelectorAll(".kubek");
+    kubki.forEach(element => {
+        element.addEventListener('click', CupClick)
+    });
+</script>
+</html>
